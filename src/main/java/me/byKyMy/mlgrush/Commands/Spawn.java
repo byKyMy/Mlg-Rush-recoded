@@ -1,6 +1,6 @@
-package deby_kymy.mlgrush.Commands;
+package me.byKyMy.mlgrush.Commands;
 
-import deby_kymy.mlgrush.Mlgrush;
+import me.byKyMy.mlgrush.Mlgrush;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -15,6 +15,7 @@ public class Spawn implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
+    if(sender instanceof Player)
 
         if(command.getName().equalsIgnoreCase("mlgrush")){
             Player player = (Player) sender;

@@ -1,7 +1,7 @@
-package deby_kymy.mlgrush.Listener;
+package me.byKyMy.mlgrush.Listener;
 
-import deby_kymy.mlgrush.Mlgrush;
-import deby_kymy.mlgrush.gamestates.EndLobbyPhase;
+import me.byKyMy.mlgrush.Mlgrush;
+import me.byKyMy.mlgrush.gamestates.LobbyPhase;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -24,6 +24,7 @@ public class JoinListener implements Listener {
     public void onJoin(PlayerJoinEvent event) {
 
 
+        LobbyPhase.lobbyPhase = true;
 
         Player player = event.getPlayer();
 
@@ -47,9 +48,9 @@ public class JoinListener implements Listener {
 
 
 
-        if(!EndLobbyPhase.isRunning){
-            EndLobbyPhase.count();
-            EndLobbyPhase.isRunning = true;
+        if(!LobbyPhase.isRunning){
+            LobbyPhase.count();
+            LobbyPhase.isRunning = true;
         }else{
             player.sendMessage("its true ... ._.");
         }

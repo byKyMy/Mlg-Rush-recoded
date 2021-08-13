@@ -1,24 +1,30 @@
-package deby_kymy.mlgrush.gamestates;
+package me.byKyMy.mlgrush.gamestates;
 
-import deby_kymy.mlgrush.Mlgrush;
+import me.byKyMy.mlgrush.Mlgrush;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.player.PlayerDropItemEvent;
 
 
 import java.util.ArrayList;
 
 
-public class EndLobbyPhase {
+public class LobbyPhase implements Listener {
 
     public static ArrayList<Player> ingame = new ArrayList<>();
 
 
     public static int xp;
     public static int scheduler;
-    public static boolean lobbyPhase = true;
+    public static boolean lobbyPhase = false;
     public static boolean isRunning = false;
+
 
 
     public static void count(){
@@ -38,11 +44,11 @@ public class EndLobbyPhase {
                         Player player1 = ingame.get(0);
                         Player player2 = ingame.get(1);
 
-                        Location Spawn1 = (Location) Mlgrush.getInstance().getConfig().get("Lobby.1");
+                        Location Spawn1 = (Location) Mlgrush.getInstance().getConfig().get("Spawn.1");
                         assert Spawn1 != null;
                         player1.teleport(Spawn1);
 
-                        Location Spawn2 = (Location) Mlgrush.getInstance().getConfig().get("Lobby.2");
+                        Location Spawn2 = (Location) Mlgrush.getInstance().getConfig().get("Spawn.2");
                         assert Spawn2 != null;
                         player2.teleport(Spawn2);
 
@@ -115,5 +121,35 @@ public class EndLobbyPhase {
 
 
 
+    @EventHandler
+    public void onBreakBlock(BlockBreakEvent event){
+
+        if (lobbyPhase = true){
+            event.setCancelled(true);
+        }else{
+            event.setCancelled(false);
+        }
+
+    }
+
+    @EventHandler
+    public void onDrop(PlayerDropItemEvent event){
+
+            event.setCancelled(true);
+
+
+    }
+
+
+    @EventHandler
+    public void onItemMove(InventoryClickEvent event){
+
+        if(lobbyPhase = true){
+            event.setCancelled(true);
+        }else {
+            event.setCancelled(false);
+        }
+
+    }
 
 }

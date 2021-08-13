@@ -1,9 +1,9 @@
-package deby_kymy.mlgrush;
+package me.byKyMy.mlgrush;
 
-import com.sun.tools.javac.code.Attribute;
-import deby_kymy.mlgrush.Commands.Spawn;
+import me.byKyMy.mlgrush.Commands.Spawn;
 import deby_kymy.mlgrush.Listener.*;
-import deby_kymy.mlgrush.gamestates.EndLobbyPhase;
+import me.byKyMy.mlgrush.Listener.*;
+import me.byKyMy.mlgrush.gamestates.LobbyPhase;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -30,6 +30,7 @@ public final class Mlgrush extends JavaPlugin {
         pluginManager.registerEvents(new Leave(), this);
         pluginManager.registerEvents(new NoHunger(), this);
         pluginManager.registerEvents(new NoPvP(), this);
+        pluginManager.registerEvents(new LobbyPhase(), this);
 
 
         Objects.requireNonNull(getCommand("mlgrush")).setExecutor(new Spawn());

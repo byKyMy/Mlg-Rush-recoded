@@ -1,4 +1,4 @@
-package deby_kymy.mlgrush.Listener;
+package me.byKyMy.mlgrush.Listener;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
